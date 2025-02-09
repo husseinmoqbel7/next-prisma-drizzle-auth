@@ -1,0 +1,32 @@
+{
+  "name": "next-prisma-drizzle-auth",
+  "version": "1.0.0",
+  "description": "Authentication template for Next.js using Prisma and Drizzle",
+  "main": "index.js",
+  "bin": {
+    "next-prisma-drizzle-auth": "./index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "next.js",
+    "auth",
+    "prisma",
+    "starter",
+    "template",
+    "cli"
+  ],
+  "author": "Hussein Moqbel",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/husseinmoqbel7/next-auth-prisma-starter"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "prompts": "^2.4.2",
+    "rimraf": "^5.0.1"
+  }
+}
