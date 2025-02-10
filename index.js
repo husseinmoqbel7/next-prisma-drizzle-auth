@@ -13,8 +13,10 @@ const __dirname = path.dirname(__filename);
 
 // Repository URLs
 const REPOS = {
-  prisma: "https://github.com/husseinmoqbel7/next-auth-prisma-starter",
-  drizzle: "https://github.com/husseinmoqbel7/next-auth-drizzle-starter",
+  prisma:
+    "https://github.com/husseinmoqbel7/next-prisma-drizzle-auth/tree/main/templates/prisma",
+  drizzle:
+    "https://github.com/husseinmoqbel7/next-prisma-drizzle-auth/tree/main/templates/drizzle",
 };
 
 // Different env templates for each ORM
