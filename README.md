@@ -1,6 +1,6 @@
 # next-prisma-drizzle-auth
 
-Authentication template for Next.js using Prisma and Drizzle. A modern authentication template built with Next.js 14, featuring both Prisma and Drizzle ORM options. This template includes email/password authentication, OAuth providers (Google, GitHub), and email verification.
+Authentication template for Next.js using Prisma and Drizzle. A modern authentication template built with Next.js 15, featuring both Prisma and Drizzle ORM options. This template includes email/password authentication, OAuth providers (Google, GitHub), and email verification.
 
 ## Key Features
 
@@ -29,14 +29,13 @@ Authentication template for Next.js using Prisma and Drizzle. A modern authentic
 
 ### Development & Extensibility
 
-- 🚀 Next.js 14 with server actions
+- 🚀 Next.js 15 with server actions
 - 🔍 Middleware integration
 - 📈 Extended next-auth session management
 - 🛡️ API & server action protection
 
 ### Settings & Customization
 
-- 📧 Email change with verification
 - 🔑 Password modification
 - 🔔 Two-factor auth toggle
 - 🔄 User role management (dev purposes)
