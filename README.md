@@ -63,7 +63,7 @@ DATABASE_TYPE="postgres" # or "mysql" or "sqlite"
 2. Generate AUTH_SECRET:
 
 ```bash
-npx auth
+npx auth secret
 ```
 
 3. Set up OAuth providers:

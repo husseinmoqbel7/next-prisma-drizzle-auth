@@ -3,9 +3,9 @@
 import bcrypt from "bcryptjs";
 import * as z from "zod";
 
-import { getUserById } from "@/data/user";
+import { db } from "@/db/db";
+import { getUserById } from "@/db/queries/user";
 import { currentUser } from "@/lib/auth";
-import { db } from "@/lib/db";
 import { SettingsSchema } from "@/lib/schemas";
 
 export const settings = async (values: z.infer<typeof SettingsSchema>) => {

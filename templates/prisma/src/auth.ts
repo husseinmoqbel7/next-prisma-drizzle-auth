@@ -6,10 +6,10 @@ import { LoginSchema } from "./lib/schemas";
 
 import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
-import { getAccountByUserId } from "./data/account";
-import { getTwoFactorConfirmationByUserId } from "./data/two-factor-confirmation";
-import { getUserByEmail, getUserById } from "./data/user";
-import { db } from "./lib/db";
+import { db } from "./db/db";
+import { getAccountByUserId } from "./db/queries/account";
+import { getTwoFactorConfirmationByUserId } from "./db/queries/two-factor-confirmation";
+import { getUserByEmail, getUserById } from "./db/queries/user";
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
   providers: [

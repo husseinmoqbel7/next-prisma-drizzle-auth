@@ -4,10 +4,10 @@ import * as z from "zod";
 import { LoginSchema } from "../lib/schemas";
 
 import { signIn } from "@/auth";
-import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation";
-import { getTwoFactorTokenByEmail } from "@/data/two-factor-token";
-import { getUserByEmail } from "@/data/user";
-import { db } from "@/lib/db";
+import { db } from "@/db/db";
+import { getTwoFactorConfirmationByUserId } from "@/db/queries/two-factor-confirmation";
+import { getTwoFactorTokenByEmail } from "@/db/queries/two-factor-token";
+import { getUserByEmail } from "@/db/queries/user";
 import { sendTwoFactorEmail, sendVerificationEmail } from "@/lib/mail";
 import {
   generateTwoFactorToken,
