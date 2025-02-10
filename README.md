@@ -2,20 +2,50 @@
 
 Authentication template for Next.js using Prisma and Drizzle. A modern authentication template built with Next.js 14, featuring both Prisma and Drizzle ORM options. This template includes email/password authentication, OAuth providers (Google, GitHub), and email verification.
 
-## Features
+## Key Features
 
-- 🔐 Next-Auth integration with Credentials Provider
-- 🚀 OAuth authentication (Google, GitHub)
-- ✉️ Email verification with Resend
-- 🎨 Styled with Tailwind CSS
+### Authentication & Security
+
+- 🔐 Next-auth v5 (Auth.js) with robust authentication
+- 🔑 Credentials & OAuth Providers (Google, GitHub)
+- ✉️ Email verification
+- 📱 Two-factor authentication (2FA)
+- 🔒 Forgot password functionality
+
+### User Management
+
+- 👥 User roles (Admin & User)
+- 🚪 Login/Logout capabilities
+- 🛂 Role-based access control
+- 👤 User hooks and utilities
+
+### Components
+
+- 🔓 Login (redirect or modal)
+- 📝 Registration
+- 🤔 Password recovery
+- ✅ Verification
+- ⚠️ Error handling
+
+### Development & Extensibility
+
+- 🚀 Next.js 14 with server actions
+- 🔍 Middleware integration
+- 📈 Extended next-auth session management
+- 🛡️ API & server action protection
+
+### Settings & Customization
+
+- 📧 Email change with verification
+- 🔑 Password modification
+- 🔔 Two-factor auth toggle
+- 🔄 User role management (dev purposes)
+
+### Technical Highlights
+
+- 🎨 Tailwind CSS styling
 - 🎯 TypeScript support
-- 📱 Fully responsive design
-- 🔄 Database integration (Prisma/Drizzle)
-- 🛡️ Server-side form validation
-- ⚡ Server Actions
-- 🔒 Secure authentication flows
-- 📨 Email notifications
-- 🎮 Easy-to-use CLI setup
+- 📱 Responsive design
 
 ## Getting Started
 
@@ -56,8 +86,6 @@ GITHUB_CLIENT_SECRET=""
 RESEND_API_KEY=""
 NEXT_PUBLIC_APP_URL="http://localhost:3000"
 RESEND_EMAIL=""
-# Only for Drizzle
-DATABASE_TYPE="postgres" # or "mysql" or "sqlite"
 ```
 
 2. Generate AUTH_SECRET:
@@ -113,14 +141,35 @@ Visit `http://localhost:3000` to see your application.
 ## Project Structure
 
 ```
-├── app/
-│   ├── api/            # API routes
-│   ├── auth/           # Authentication pages
-│   └── ...            # Other app routes
-├── components/         # React components
-├── lib/               # Utility functions
-├── schemas/           # Form validation schemas
-└── styles/            # CSS styles
+src
+├── actions           # Server Actions
+│
+├── app
+│   ├── auth          # Authentication Routes
+│   │
+|   ├── api           # API Routes
+|
+├── components
+│   ├── auth          # Authentication Components
+│   ├── ui.tsx        # Shadcn UI Components
+│
+├── db                # Database
+|
+├── hooks
+|
+├── lib
+│   ├── shchemas      # Authentication Schemas using Zod
+│   ├── auth          # Authentication Utilities
+│   ├── mail          # Email Utilities
+│   ├── tokens        # Token Utilities
+|
+├── middleware.ts     # Middleware Configuration for Next-Auth
+|
+├── auth.ts           # Next-Auth Configuration
+|
+├── next-auth.d.ts     # Next-Auth Custom Types
+|
+├── routes            # Next-Auth Routes
 ```
 
 ## Authentication Flow
@@ -128,24 +177,17 @@ Visit `http://localhost:3000` to see your application.
 1. Users can sign up using email/password or OAuth
 2. Email verification is required for email/password signup
 3. Password reset functionality available
-4. OAuth users are automatically verified
-5. Session management handled by Next-Auth
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+4. Two-factor authentication (2FA) is optional for email/password signup
+5. OAuth users are automatically verified
+6. Session management handled by Next-Auth
 
 ## Repository
 
-This project is maintained at [https://github.com/husseinmoqbel7/next-auth-prisma-starter](https://github.com/husseinmoqbel7/next-auth-prisma-starter)
+This project is maintained at [https://github.com/husseinmoqbel7/next-prisma-drizzle-auth](https://github.com/husseinmoqbel7/next-prisma-drizzle-auth)
 
 ## Author
 
-Hussein Moqbel
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Hussein Moqbel - [https://github.com/husseinmoqbel7](https://github.com/husseinmoqbel7)
 
 ## Support
 

@@ -1,6 +1,6 @@
 {
   "name": "next-prisma-drizzle-auth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Authentication template for Next.js using Prisma and Drizzle",
   "main": "index.js",
   "bin": {
