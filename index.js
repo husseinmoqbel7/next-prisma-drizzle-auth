@@ -11,12 +11,13 @@ const require = createRequire(import.meta.url);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Repository URLs
-const REPOS = {
-  prisma:
-    "https://github.com/husseinmoqbel7/next-prisma-drizzle-auth/tree/main/templates/prisma",
-  drizzle:
-    "https://github.com/husseinmoqbel7/next-prisma-drizzle-auth/tree/main/templates/drizzle",
+// Repository URL
+const REPO_URL = "https://github.com/husseinmoqbel7/next-prisma-drizzle-auth";
+
+// ORM options
+const ORM_OPTIONS = {
+  prisma: "templates/prisma",
+  drizzle: "templates/drizzle",
 };
 
 // Different env templates for each ORM
@@ -77,12 +78,10 @@ const createEnvFile = (projectPath, orm) => {
   const envTemplate = ENV_TEMPLATES[orm];
 
   try {
-    fs.writeFileSync(path.join(projectPath, ".env.local"), envTemplate);
-    console.log(chalk.green("✅ Created .env local file"));
+    fs.writeFileSync(path.join(projectPath, ".env"), envTemplate);
+    console.log(chalk.green("✅ Created .env file"));
   } catch (error) {
-    console.error(
-      chalk.red("❌ Failed to create .env local file:", error.message)
-    );
+    console.error(chalk.red("❌ Failed to create .env file:", error.message));
     throw error;
   }
 };
@@ -150,6 +149,11 @@ const cleanup = (projectPath) => {
   }
 };
 
+// Copy template files
+const copyTemplateFiles = (srcPath, destPath) => {
+  fs.cpSync(srcPath, destPath, { recursive: true });
+};
+
 // Update package.json
 const updatePackageJson = (projectPath, projectName) => {
   const packageJsonPath = path.join(projectPath, "package.json");
@@ -205,20 +209,31 @@ const createTemplate = async () => {
   });
 
   const orm = response.orm;
-  const repoUrl = REPOS[orm];
   const projectPath = path.join(process.cwd(), projectName);
+  const templatePath = path.join(projectPath, ORM_OPTIONS[orm]);
 
   console.log(chalk.cyan(`\n🚀 Initializing ${orm} project setup...\n`));
 
   // Clone the repository
   console.log(chalk.cyan("📥 Cloning template repository..."));
-  if (!runCommand(`git clone ${repoUrl} ${projectName}`)) {
+  if (!runCommand(`git clone ${REPO_URL} ${projectName}`)) {
     cleanup(projectPath);
     process.exit(1);
   }
 
   // Navigate to project directory for subsequent commands
   process.chdir(projectPath);
+
+  // Copy specific template files
+  console.log(chalk.cyan(`📂 Copying ${orm} template files...`));
+  try {
+    copyTemplateFiles(templatePath, projectPath);
+    rimraf.sync(path.join(projectPath, "templates"));
+  } catch (error) {
+    console.error(chalk.red(`❌ Failed to copy template: ${error.message}`));
+    cleanup(projectPath);
+    process.exit(1);
+  }
 
   // Update package.json
   console.log(chalk.cyan("📝 Updating package.json..."));
